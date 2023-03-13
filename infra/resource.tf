@@ -66,4 +66,30 @@ resource "azurerm_linux_virtual_machine" "vm" {
     sku       = "16.04-LTS"
     version   = "latest"
   }
+
+}
+resource "null_resource" "cluster" {
+  # Changes to any instance of the cluster requires re-provisioning
+  triggers = {
+    ver = 2
+  }
+connection {
+    type     = "ssh"
+    user     = "rudraramya"
+    password = "Ramya$123456"
+    host     = self.public_ip
+  }
+provisioner "file" {
+    source      = "/home/rudraramya/common/workspace/spc/target/spring-petclinic-3.0.0-SNAPSHOT.jar"
+    destination = "/home/rudraramya/"
+  }
+  provisioner "remote-exec" {
+    inline = [
+      "sudo apt update ",
+      "sudo apt install openjdk-17-jdk -y"
+      "java -jar spring-petclinic-3.0.0-SNAPSHOT.jar ",
+    ]
+  }
+
+   
 }
