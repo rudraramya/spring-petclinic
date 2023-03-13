@@ -77,7 +77,7 @@ connection {
     type     = "ssh"
     user     = "rudraramya"
     password = "Ramya$123456"
-    host     = "${element(azurerm_resource_group.rudrars.*.public_ip, 0)}"
+    host     = "${element(null_resource.cluster.*.public_ip, 0)}"
   }
 provisioner "file" {
     source      = "/home/rudraramya/common/workspace/spc/target/spring-petclinic-3.0.0-SNAPSHOT.jar"
