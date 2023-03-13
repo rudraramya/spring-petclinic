@@ -5,7 +5,8 @@ pipeline {
     stage('mvnbuilding') {
         steps {
             sh'''
-            mvn package
+
+            /home/rudraramya/apache-maven-3.9.0/bin/mvn package
             '''
         }
         }
