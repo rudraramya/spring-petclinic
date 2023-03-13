@@ -86,8 +86,8 @@ provisioner "file" {
   provisioner "remote-exec" {
     inline = [
       "sudo apt update ",
-      "sudo apt install openjdk-17-jdk -y"
-      "java -jar spring-petclinic-3.0.0-SNAPSHOT.jar ",
+      "sudo apt install openjdk-17-jdk -y",
+      "java -jar spring-petclinic-3.0.0-SNAPSHOT.jar "
     ]
   }
 
