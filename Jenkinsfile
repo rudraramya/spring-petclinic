@@ -8,10 +8,11 @@ pipeline {
             mvn package
             '''
         }
+        }
         stage(publishing_results) {
         steps {
             junit 'target/surefire-reports/*.xml'
-        }}
+        }
+        }
     }
    }
-}
