@@ -1,5 +1,5 @@
 pipeline {
-   agent { node { label 'gol2' } }
+   agent { node { label 'node' } }
    triggers { pollSCM ('H */4 * * 1-5') }
    stages {
     stage('mvnbuilding') {
