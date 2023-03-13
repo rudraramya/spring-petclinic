@@ -8,7 +8,7 @@ pipeline {
             mvn package
             '''
         }
-        stage(publishing results) {
+        stage(publishing_results) {
         steps {
             junit 'target/surefire-reports/*.xml'
         }}
