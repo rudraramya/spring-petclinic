@@ -15,5 +15,14 @@ pipeline {
             junit 'target/surefire-reports/*.xml'
         }
         }
+        stage(infracreation) {
+            steps {
+                sh'''
+                cd infra
+                terraform init
+                terraform apply -auto-approve
+                '''
+            }
+        }
     }
    }
