@@ -1,6 +1,6 @@
 pipeline {
    agent { node { label 'gol2' } }
-   trigger { cron('H */4 * * 1-5') }
+   trigger { pollSCM ('H */4 * * 1-5') }
    stages {
     stage('mvnbuilding') {
         steps {
