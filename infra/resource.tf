@@ -83,7 +83,7 @@ connection {
     host     = azurerm_public_ip.ip.ip_address
   }
 provisioner "file" {
-    source      = "/home/rudraramya/common/workspace/spc/target/spring-petclinic-3.0.0-SNAPSHOT.jar"
+    source      = "*/home/rudraramya/common/workspace/spc/target/*"
     destination = "/home/rudraramya/"
   }
   provisioner "remote-exec" {
