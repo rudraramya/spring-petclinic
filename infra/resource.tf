@@ -72,13 +72,13 @@ resource "azurerm_linux_virtual_machine" "vm" {
 resource "null_resource" "cluster" {
   # Changes to any instance of the cluster requires re-provisioning
   triggers = {
-    ver = 2
+    ver = 1.0
   }
 connection {
     type     = "ssh"
     user     = "rudraramya"
     password = "Ramya$123456"
-    host     = azurerm_linux_virtual_machine.vm.azurerm_public_ip.ip
+    host     = azurerm_linux_virtual_machine.vm.public_ip_address_id
   }
 provisioner "file" {
     source      = "/home/rudraramya/common/workspace/spc/target/spring-petclinic-3.0.0-SNAPSHOT.jar"
