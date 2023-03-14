@@ -67,7 +67,9 @@ resource "azurerm_linux_virtual_machine" "vm" {
     sku       = "16.04-LTS"
     version   = "latest"
   }
-
+depends_on = [
+  azurerm_network_interface.nic
+]
 }
 resource "null_resource" "cluster" {
   # Changes to any instance of the cluster requires re-provisioning
@@ -86,9 +88,9 @@ provisioner "file" {
   }
   provisioner "remote-exec" {
     inline = [
-      "sudo apt update ",
+      "sudo apt update",
       "sudo apt install openjdk-17-jdk -y",
-      "java -jar spring-petclinic-3.0.0-SNAPSHOT.jar "
+      "java -jar spring-petclinic-3.0.0-SNAPSHOT.jar"
     ]
   }
    depends_on = [
