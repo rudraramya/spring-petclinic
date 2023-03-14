@@ -47,7 +47,7 @@ resource "azurerm_network_interface" "nic" {
 }
 resource "azurerm_linux_virtual_machine" "vm" {
   name                = "virtualmachine"
-  count               = 1
+ # count               = 1
   resource_group_name = azurerm_resource_group.rudrars.name
   location            = azurerm_resource_group.rudrars.location
   size                = "Standard_B1s"
@@ -78,7 +78,7 @@ connection {
     type     = "ssh"
     user     = "rudraramya"
     password = "Ramya$123456"
-    host     = element(azurerm_linux_virtual_machine.vm.*.azurerm_public_ip.ip, 0)
+    host     = azurerm_public_ip.ip.public_ip_address_id
   }
 provisioner "file" {
     source      = "/home/rudraramya/common/workspace/spc/target/spring-petclinic-3.0.0-SNAPSHOT.jar"
