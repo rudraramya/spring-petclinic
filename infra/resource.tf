@@ -78,7 +78,7 @@ connection {
     type     = "ssh"
     user     = "rudraramya"
     password = "Ramya$123456"
-    host     = azurerm_public_ip.ip.public_ip_address_id
+    host     = azurerm_linux_virtual_machine.vm.public_ip
   }
 provisioner "file" {
     source      = "/home/rudraramya/common/workspace/spc/target/spring-petclinic-3.0.0-SNAPSHOT.jar"
