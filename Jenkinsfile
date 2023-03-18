@@ -1,5 +1,5 @@
 pipeline {
-   agent { node { label 'node' } }
+   agent { node { label 'JDK_MAVEN' } }
    triggers { pollSCM ('H */4 * * 1-5') }
    stages {
     stage('mvnbuilding') {
@@ -27,4 +27,3 @@ pipeline {
     }
    }
 
-this is change in dev
